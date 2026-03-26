@@ -1,0 +1,39 @@
+# Environment & secrets
+.env
+.env.local
+.env.*.local
+*.env
+
+# Supabase CLI
+supabase/.temp/
+.supabase/
+
+# Flutter / Dart build artifacts
+app/flutterflow/build/
+app/flutterflow/.dart_tool/
+app/flutterflow/.flutter-plugins
+app/flutterflow/.flutter-plugins-dependencies
+app/flutterflow/pubspec.lock
+
+# IDE and OS files
+.vscode/
+.idea/
+*.iml
+.DS_Store
+Thumbs.db
+
+# Node (if any tooling scripts use Node)
+node_modules/
+npm-debug.log*
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+venv/
+.venv/
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
