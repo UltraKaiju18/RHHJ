@@ -24,17 +24,38 @@ This folder contains all database design, migration, and configuration files for
 
 1. Create a new project at [app.supabase.com](https://app.supabase.com).
 2. Copy your project URL and anon/service-role API keys to a local `.env` file (never commit this file).
-3. Run migration scripts from [`migrations/`](migrations/) in order against your Supabase project.
+3. Apply migrations using one of the methods below.
 4. Load reference data from [`seed-data/`](seed-data/) if needed.
+
+## Applying Migrations
+
+### Option A — Supabase CLI (recommended)
+
+```bash
+# Link CLI to your Supabase project (once per machine)
+supabase link --project-ref <your-project-ref>
+
+# Push all pending migrations to the linked remote project
+supabase db push
+```
+
+### Option B — Supabase SQL Editor (manual)
+
+1. Open your project at [app.supabase.com](https://app.supabase.com).
+2. Navigate to **SQL Editor**.
+3. Open each file in `migrations/` in alphabetical order.
+4. Paste the SQL content into the editor and click **Run**.
+
+> Run migrations in filename order (alphabetical = chronological because files are
+> timestamped `YYYYMMDDHHMMSS_description.sql`).
 
 ## Migration Naming Convention
 
-Migration files should be numbered sequentially:
+Migration files use a UTC timestamp prefix so they sort chronologically:
 
 ```
 migrations/
-├── 001_create_patients_table.sql
-├── 002_create_visits_table.sql
-├── 003_create_medications_table.sql
+├── 20260402000000_initial_core_schema.sql
+├── 20260501120000_add_rls_policies.sql
 └── ...
 ```
